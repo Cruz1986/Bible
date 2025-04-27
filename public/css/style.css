@@ -1,0 +1,76 @@
+/* Custom styles for the liturgical calendar */
+
+/* Override Bootstrap colors for liturgical colors */
+.bg-green {
+    background-color: #28a745 !important;
+  }
+  
+  .bg-violet {
+    background-color: #6f42c1 !important;
+  }
+  
+  .bg-white {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+  }
+  
+  .bg-red {
+    background-color: #dc3545 !important;
+  }
+  
+  .bg-black {
+    background-color: #212529 !important;
+  }
+  
+  .bg-rose {
+    background-color: #e83e8c !important;
+  }
+  
+  /* Text colors for liturgical colors */
+  .text-green {
+    color: #28a745 !important;
+  }
+  
+  .text-violet {
+    color: #6f42c1 !important;
+  }
+  
+  .text-red {
+    color: #dc3545 !important;
+  }
+  
+  .text-black {
+    color: #212529 !important;
+  }
+  
+  .text-rose {
+    color: #e83e8c !important;
+  }
+  
+  /* Calendar specific styles */
+  .solemnity-text {
+    font-weight: bold;
+    color: #dc3545;
+  }
+  
+  .feast-text {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .memorial-text {
+    font-weight: bold;
+    color: #6c757d;
+  }
+  
+  /* Calendar navigation */
+  .calendar-nav {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Footer styles */
+  footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #dee2e6;
+  }

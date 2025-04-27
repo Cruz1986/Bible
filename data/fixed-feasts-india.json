@@ -1,0 +1,93 @@
+[
+    {
+     "feast_month": "1",
+     "feast_date": "3",
+     "feast_code": "IN Saint Kuriakose Elias Chavara, priest",
+     "feast_ta": "புனித குரியாக்கோஸ் எலியாஸ் சவரா - மறைப்பணியாளர்",
+     "feast_type": "OpMem"
+    },
+    {
+     "feast_month": "1",
+     "feast_date": "14",
+     "feast_code": "IN Saint Devasahayam Pillai, martyr",
+     "feast_ta": "புனித தேவசகாயம் பிள்ளை, மறைச்சாட்சி",
+     "feast_type": "OpMem"
+    },
+    {
+     "feast_month": "1",
+     "feast_date": "16",
+     "feast_code": "IN Saint Joseph Vaz, priest",
+     "feast_ta": "புனித ஜோசப் வாஸ் - மறைப்பணியாளர்",
+     "feast_type": "Mem"
+    },
+    {
+     "feast_month": "2",
+     "feast_date": "4",
+     "feast_code": "IN Saint John de Brito, priest and martyr",
+     "feast_ta": "புனித ஜான் தெ பிரிட்டோ (அருளானந்தர்) - மறைப்பணியாளர், மறைச்சாட்சி",
+     "feast_type": "Mem"
+    },
+    {
+     "feast_month": "2",
+     "feast_date": "6",
+     "feast_code": "IN Saint Gonsalo Garcia, martyr",
+     "feast_ta": "புனித கொன்சாலோ கார்சியா - மறைச்சாட்சி",
+     "feast_type": "Mem"
+    },
+    {
+     "feast_month": "2",
+     "feast_date": "25",
+     "feast_code": "IN Blessed Rani Maria, virgin, martyr",
+     "feast_ta": "முத்தி. இராணி மரியா, கன்னியர், மறைச்சாட்சி",
+     "feast_type": "OpMem"
+    },
+    {
+     "feast_month": "6",
+     "feast_date": "8",
+     "feast_code": "IN Blessed Maria Theresa Chiramel, virgin",
+     "feast_ta": "முத்தி. மரிய தெரேசா சிராமெல் - கன்னியர்",
+     "feast_type": "OpMem"
+    },
+    {
+     "feast_month": "7",
+     "feast_date": "3",
+     "feast_code": "IN Saint Thomas the Apostle",
+     "feast_ta": "புனித தோமா - இந்தியாவின் திருத்தூதர்",
+     "feast_type": "Solemnity-PrincipalPartron-Place"
+    },
+    {
+     "feast_month": "7",
+     "feast_date": "28",
+     "feast_code": "IN Saint Alphonsa of the Immaculate Conception (Alphonsa Muttathupadathu), virgin",
+     "feast_ta": "அமலோற்பவத்தின் புனித அல்போன்சா முட்டாத்துபாடாத் - கன்னியர்",
+     "feast_type": "Mem"
+    },
+    {
+     "feast_month": "8",
+     "feast_date": "30",
+     "feast_code": "IN Saint Euphrasia, virgin",
+     "feast_ta": "புனித யூப்ரேசியா, கன்னியர்",
+     "feast_type": "OpMem"
+    },
+    {
+     "feast_month": "9",
+     "feast_date": "5",
+     "feast_code": "IN Saint Teresa of Calcutta, virgin",
+     "feast_ta": "புனித அன்னை தெரேசா - கன்னியர்",
+     "feast_type": "Mem"
+    },
+    {
+     "feast_month": "10",
+     "feast_date": "16",
+     "feast_code": "IN Blessed Augustine Thevarparambil, priest",
+     "feast_ta": "முத்தி. அகுஸ்தின் தேவர்பரம்பில் - மறைப்பணியாளர்",
+     "feast_type": "OpMem"
+    },
+    {
+     "feast_month": "12",
+     "feast_date": "3",
+     "feast_code": "IN Saint Francis Xavier, priest",
+     "feast_ta": "புனித பிரான்சிஸ் சவேரியார் - மறைப்பணியாளர், இந்தியாவின் பாதுகாவலர்",
+     "feast_type": "Solemnity-PrincipalPartron-Place"
+    }
+   ]

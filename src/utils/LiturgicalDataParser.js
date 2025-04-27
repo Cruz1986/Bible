@@ -26,6 +26,9 @@ class LiturgicalDataParser {
       
       // Check for Easter-related moveable feasts
       const easterFeast = this.getEasterRelatedFeast(date, easterDate);
+      if (easterFeast) {
+        return easterFeast;
+      }
       
       // Check for fixed feasts
       const month = date.month;
@@ -33,31 +36,25 @@ class LiturgicalDataParser {
       
       // Look for fixed feasts
       const fixedFeast = this.getFixedFeast(month, day);
-      
-      // Look for India-specific feasts if region is India
-      let indiaFeast = null;
-      if (this.region === 'india') {
-        indiaFeast = this.getIndiaFeast(month, day);
+      if (fixedFeast) {
+        return fixedFeast;
       }
       
-      // Determine the liturgical season for season indicator
+      // Look for India-specific feasts if region is India
+      if (this.region === 'india') {
+        const indiaFeast = this.getIndiaFeast(month, day);
+        if (indiaFeast) {
+          return indiaFeast;
+        }
+      }
+      
+      // Determine the liturgical season and return a season indicator
       const season = this.getLiturgicalSeasonInfo(date, easterDate);
-      const seasonIndicator = {
+      return {
         code: season.seasonCode,
         rank: 13.4,
         color: season.color
       };
-      
-      // Return the highest ranked feast in order of precedence:
-      // 1. Easter-related (highest priority)
-      // 2. India-specific feast (if in India region)
-      // 3. Fixed feast from general calendar
-      // 4. Season indicator (lowest priority)
-      
-      if (easterFeast) return easterFeast;
-      if (indiaFeast) return indiaFeast;
-      if (fixedFeast) return fixedFeast;
-      return seasonIndicator;
     } catch (error) {
       console.error('Error getting feast for date:', error);
       return null;
@@ -473,7 +470,6 @@ class LiturgicalDataParser {
       isIndianFeast: name.includes('IN ') || false
     };
   }
-
   /**
    * Get day abbreviation
    * @param {number} weekday - Weekday (0-6, where 0 is Sunday)
@@ -664,130 +660,10 @@ class LiturgicalDataParser {
         "feast_type": "Solemnity"
       },
       {
-        "feast_month": "1",
-        "feast_date": "2",
-        "feast_code": "Saints Basil the Great and Gregory Nazianzen, bishops and doctors",
-        "feast_type": "Mem"
-      },
-      {
-        "feast_month": "1",
-        "feast_date": "7",
-        "feast_code": "Saint Raymond of Penyafort, priest",
-        "feast_type": "OpMem"
-      },
-      {
-        "feast_month": "1",
-        "feast_date": "13",
-        "feast_code": "Saint Hilary of Poitiers, bishop and doctor",
-        "feast_type": "OpMem"
-      },
-      {
-        "feast_month": "1",
-        "feast_date": "17",
-        "feast_code": "Saint Anthony of Egypt, abbot",
-        "feast_type": "Mem"
-      },
-      {
-        "feast_month": "1",
-        "feast_date": "20",
-        "feast_code": "Saint Fabian, pope and martyr",
-        "feast_type": "OpMem"
-      },
-      {
-        "feast_month": "1",
-        "feast_date": "21",
-        "feast_code": "Saint Agnes, virgin and martyr",
-        "feast_type": "Mem"
-      },
-      {
-        "feast_month": "1",
-        "feast_date": "22",
-        "feast_code": "Saint Vincent, deacon and martyr",
-        "feast_type": "OpMem"
-      },
-      {
-        "feast_month": "1",
-        "feast_date": "24",
-        "feast_code": "Saint Francis de Sales, bishop and doctor",
-        "feast_type": "Mem"
-      },
-      {
-        "feast_month": "1",
-        "feast_date": "25",
-        "feast_code": "The Conversion of Saint Paul, apostle",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "1",
-        "feast_date": "26",
-        "feast_code": "Saints Timothy and Titus, bishops",
-        "feast_type": "Mem"
-      },
-      {
-        "feast_month": "1",
-        "feast_date": "27",
-        "feast_code": "Saint Angela Merici, virgin",
-        "feast_type": "OpMem"
-      },
-      {
-        "feast_month": "1",
-        "feast_date": "28",
-        "feast_code": "Saint Thomas Aquinas, priest and doctor",
-        "feast_type": "Mem"
-      },
-      {
-        "feast_month": "1",
-        "feast_date": "31",
-        "feast_code": "Saint John Bosco, priest",
-        "feast_type": "Mem"
-      },
-      {
         "feast_month": "2",
         "feast_date": "2",
         "feast_code": "Presentation of the Lord",
         "feast_type": "Feast-Lord"
-      },
-      {
-        "feast_month": "2",
-        "feast_date": "3",
-        "feast_code": "Saint Blase, bishop and martyr",
-        "feast_type": "OpMem"
-      },
-      {
-        "feast_month": "2",
-        "feast_date": "5",
-        "feast_code": "Saint Agatha, virgin and martyr",
-        "feast_type": "Mem"
-      },
-      {
-        "feast_month": "2",
-        "feast_date": "6",
-        "feast_code": "Saints Paul Miki and companions, martyrs",
-        "feast_type": "Mem"
-      },
-      {
-        "feast_month": "2",
-        "feast_date": "10",
-        "feast_code": "Saint Scholastica, virgin",
-        "feast_type": "Mem"
-      },
-      {
-        "feast_month": "2",
-        "feast_date": "11",
-        "feast_code": "Our Lady of Lourdes",
-        "feast_type": "OpMem"
-      },
-      {
-        "feast_month": "2",
-        "feast_date": "22",
-        "feast_code": "Chair of Saint Peter, apostle",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "2",
-        "feast_date": "23",
-        "feast_code": "Saint Polycarp, bishop and martyr",
-        "feast_type": "Mem"
       },
       {
         "feast_month": "3",
@@ -800,30 +676,6 @@ class LiturgicalDataParser {
         "feast_date": "25",
         "feast_code": "Annunciation of the Lord",
         "feast_type": "Solemnity"
-      },
-      {
-        "feast_month": "4",
-        "feast_date": "25",
-        "feast_code": "Saint Mark the Evangelist",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "5",
-        "feast_date": "1",
-        "feast_code": "Saint Joseph the Worker",
-        "feast_type": "OpMem"
-      },
-      {
-        "feast_month": "5",
-        "feast_date": "3",
-        "feast_code": "Saints Philip and James, Apostles",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "5",
-        "feast_date": "14",
-        "feast_code": "Saint Matthias the Apostle",
-        "feast_type": "Feast"
       },
       {
         "feast_month": "5",
@@ -844,40 +696,10 @@ class LiturgicalDataParser {
         "feast_type": "Solemnity"
       },
       {
-        "feast_month": "7",
-        "feast_date": "3",
-        "feast_code": "Saint Thomas the Apostle",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "7",
-        "feast_date": "22",
-        "feast_code": "Saint Mary Magdalene",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "7",
-        "feast_date": "25",
-        "feast_code": "Saint James, apostle",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "7",
-        "feast_date": "26",
-        "feast_code": "Saints Joachim and Anne",
-        "feast_type": "Mem"
-      },
-      {
         "feast_month": "8",
         "feast_date": "6",
         "feast_code": "Transfiguration of the Lord",
         "feast_type": "Feast-Lord"
-      },
-      {
-        "feast_month": "8",
-        "feast_date": "10",
-        "feast_code": "Saint Lawrence, deacon and martyr",
-        "feast_type": "Feast"
       },
       {
         "feast_month": "8",
@@ -886,46 +708,10 @@ class LiturgicalDataParser {
         "feast_type": "Solemnity"
       },
       {
-        "feast_month": "8",
-        "feast_date": "24",
-        "feast_code": "Saint Bartholomew the Apostle",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "9",
-        "feast_date": "8",
-        "feast_code": "Birth of the Blessed Virgin Mary",
-        "feast_type": "Feast"
-      },
-      {
         "feast_month": "9",
         "feast_date": "14",
         "feast_code": "Exaltation of the Holy Cross",
         "feast_type": "Feast-Lord"
-      },
-      {
-        "feast_month": "9",
-        "feast_date": "21",
-        "feast_code": "Saint Matthew the Evangelist, Apostle, Evangelist",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "9",
-        "feast_date": "29",
-        "feast_code": "Saints Michael, Gabriel and Raphael, Archangels",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "10",
-        "feast_date": "18",
-        "feast_code": "Saint Luke the Evangelist",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "10",
-        "feast_date": "28",
-        "feast_code": "Saint Simon and Saint Jude, apostles",
-        "feast_type": "Feast"
       },
       {
         "feast_month": "11",
@@ -940,18 +726,6 @@ class LiturgicalDataParser {
         "feast_type": "Solemnity"
       },
       {
-        "feast_month": "11",
-        "feast_date": "9",
-        "feast_code": "Dedication of the Lateran basilica",
-        "feast_type": "Feast-Lord"
-      },
-      {
-        "feast_month": "11",
-        "feast_date": "30",
-        "feast_code": "Saint Andrew the Apostle",
-        "feast_type": "Feast"
-      },
-      {
         "feast_month": "12",
         "feast_date": "8",
         "feast_code": "Immaculate Conception of the Blessed Virgin Mary",
@@ -962,24 +736,6 @@ class LiturgicalDataParser {
         "feast_date": "25",
         "feast_code": "Nativity of the Lord",
         "feast_type": "Solemnity"
-      },
-      {
-        "feast_month": "12",
-        "feast_date": "26",
-        "feast_code": "Saint Stephen, the first martyr",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "12",
-        "feast_date": "27",
-        "feast_code": "Saint John the Apostle and evangelist",
-        "feast_type": "Feast"
-      },
-      {
-        "feast_month": "12",
-        "feast_date": "28",
-        "feast_code": "Holy Innocents, martyrs",
-        "feast_type": "Feast"
       }
     ];
   }
